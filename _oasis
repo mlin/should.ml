@@ -1,0 +1,29 @@
+OASISFormat: 0.3
+Name:        should
+Version:     0.0.1
+Synopsis:    Literate assertions
+Authors:     Mike Lin
+Maintainers: mlin@mlin.net
+License:     MIT
+Homepage:    https://github.com/mlin/should.ml
+Description: Write assertions in in (roughly) plain English
+Plugins:     DevFiles (0.3), META (0.3)
+
+Library should
+  Path:            .
+  BuildTools:      ocamlbuild
+  BuildDepends:    str
+  Modules:         Should
+
+Executable unit_tests
+  Path:           .
+  MainIs:         unit_tests.ml
+  Install:        false
+  Build$:         flag(tests)
+  BuildTools:     ocamlbuild
+  BuildDepends:   str,oUnit
+  CompiledObject: best
+
+Test test
+  TestTools:   unit_tests
+  Command:     $unit_tests
