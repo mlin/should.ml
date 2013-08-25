@@ -47,6 +47,8 @@ let fun_test_case () =
     end
 ```
 
+See also the library's [own unit tests](https://github.com/mlin/should.ml/blob/master/unit_tests.ml).
+
 
 ### Reference
 
