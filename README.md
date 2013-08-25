@@ -1,17 +1,18 @@
-should.ml
-=========
+# [should.ml](https://github.com/mlin/should.js)
+**Maintainer: [Mike Lin](https://blog.mlin.net/)**
 
-This OCaml library allows one to express assertion statements in a
-domain-specific language roughly resembling plain English, which makes unit
-tests a bit easier to read. No preprocessor or syntax extension is needed;
-rather, the DSL just makes use of objects and overloaded operators.
+
+This OCaml library allows one to write assertion statements in a
+domain-specific language roughly resembling plain English, making unit
+tests a bit nicer to read. No preprocessor or syntax extension is needed;
+rather, the DSL is expressed through some mild abuse of objects and
+overloaded operators.
 
 This project is inspired by similar tools for various other languages,
 especially [expect.js](https://github.com/LearnBoost/expect.js/) and its
 predecessor [should.js](https://github.com/visionmedia/should.js/).
 
-Quick example
--------------
+### Quick example
 
 Read $ as the letter s, i.e. "$hould" as "should".
 
@@ -47,13 +48,12 @@ let fun_test_case () =
 ```
 
 
-Reference
----------
+### Reference
 
 The assertions supported by should.ml are best shown by example. **Make sure to
 `open Should` so that all the necessary names are available.**
 
-**Assertions on any type**
+#### Assertions on any type
 
 ```
 x $hould # equal y
@@ -88,7 +88,7 @@ Lastly, there's a generic assertion for a given predicate, with
 x $hould # satisfy pred
 ```
 
-**Float**
+#### Float
 
 When `x : float`,
 ```
@@ -96,7 +96,7 @@ x $hould # be # nan
 x $hould # be # finite
 ```
 
-**String**
+#### String
 
 To access some string-specific assertions, prefix the statement with `string`.
 When `x : string`,
@@ -114,7 +114,7 @@ you _can_ perform those assertions on string values; just don't include the
 a minor wart in the DSL which may be possible to address with GADTs in the
 future.
 
-**List and array**
+#### List and array
 
 When `x : list`,
 ```
@@ -148,7 +148,7 @@ end
 
 One can then say `hashtbl x $hould # contain some_key`, etc.
 
-**Function calls**
+#### Function calls
 
 Often one just wants to use the equality and comparison operators on the result
 of a function application, e.g. `f(x) $houldn't # be # nan`. A couple
