@@ -11,7 +11,7 @@ especially [expect.js](https://github.com/LearnBoost/expect.js/) and its
 predecessor [should.js](https://github.com/visionmedia/should.js/).
 
 Quick example
-=============
+-------------
 
 Read $ as the letter s, i.e. "$hould" as "should".
 
@@ -48,46 +48,47 @@ let fun_test_case () =
 
 
 Reference
-==============
+---------
 
-The assertions supported by should.js are best shown by example. Make sure to
-`open Should` so that all the necessary names are available.
+The assertions supported by should.js are best shown by example. **Make sure to
+`open Should` so that all the necessary names are available.**
 
-*Assertions on any type*
+**Assertions on any type**
 
 ```
 x $hould # equal y
 x $hould # not # equal y
-x $hould # physically # equal y
-x $hould # not # physically # equal y
 x $hould # be # above y
 x $hould # not # be # above y
 x $hould # be # below y
 x $hould # not # be # below y
+```
+
+
+Evidently, any assertion can be negated by saying `$hould # not` instead of just
+`$hould`. One can also say `$houldn't`. **From this point on, the negated version
+of each assertion will not be shown.**
+
+```
 x $hould # be # at # least y
-x $hould # not # be # at # least y
 x $hould # be # at # most y
-x $hould # not # be # at # most y
+x $hould # physically # equal y
 x $hould # be # within (y,z)
-x $hould # not # be # within (y,z)
 x $hould # be # strictly # within (y,z)
-x $hould # not # be # strictly # within (y,z)
 ```
 
 "Physically" equal uses `(==)` instead of `(=)`. "Strictly within" compares
 against the bounds using `(>)` and `(<)` rather than `(>=)` and `(<=)`.
 
-Evidently, any assertion can be negated by saying `$hould # not` instead of just
-`$hould`. One can also say `$houldn't`. *From this point on, the negated version
-of each assertion will not be shown.*
 
-There's a way to check a given predicate, with `pred : 'a -> bool`:
+Lastly, there's a generic assertion for a given predicate, with
+`pred : 'a -> bool`:
 
 ```
 x $hould # satisfy pred
 ```
 
-*Floats*
+**Float**
 
 When `x : float`,
 ```
@@ -95,7 +96,7 @@ x $hould # be # nan
 x $hould # be # finite
 ```
 
-*Strings*
+**String**
 
 To access some string-specific assertions, prefix the statement with `string`.
 When `x : string`,
@@ -110,10 +111,10 @@ The `string` prefix is only used for these specific assertions, and cannot be
 used with the generic equality and comparison assertions found above. Of course,
 you _can_ perform those assertions on string values; just don't include the
 `string` prefix. The same holds true for additional prefixes show below. This is
-a minor wart in the language which may be possible to address with GADTs in the
+a minor wart in the DSL which may be possible to address with GADTs in the
 future.
 
-*Lists and arrays*
+**List and array**
 
 When `x : list`,
 ```
@@ -147,7 +148,7 @@ end
 
 One can then say `hashtbl x $hould # contain some_key`, etc.
 
-*Function calls*
+**Function calls**
 
 Often one just wants to use the equality and comparison operators on the result
 of a function application, e.g. `f(x) $houldn't # be # nan`. A couple
@@ -162,6 +163,6 @@ calling f x $hould # raise # exn # satisfying pred
 
 The `prefixed` assertion checks that the function call raises an exception, and
 that the given string is a prefix of `Printexc.to_string` on the exception. This
-usually starts with the exception constructor name, e.g. "Failure(". For even
-greater precision there's the `satisfying` assertion, where
+usually starts with the exception constructor name, e.g. `"Failure("`. For even
+greater precision, there's the `satisfying` assertion, where
 `pred : exn -> bool`.
