@@ -50,7 +50,7 @@ let fun_test_case () =
 Reference
 ---------
 
-The assertions supported by should.js are best shown by example. **Make sure to
+The assertions supported by should.ml are best shown by example. **Make sure to
 `open Should` so that all the necessary names are available.**
 
 **Assertions on any type**
