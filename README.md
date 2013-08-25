@@ -1,7 +1,6 @@
 # [should.ml](https://github.com/mlin/should.js)
 **Maintainer: [Mike Lin](https://blog.mlin.net/)**
 
-
 This OCaml library allows one to write assertion statements in a
 domain-specific language roughly resembling plain English, making unit
 tests a bit nicer to read. No preprocessor or syntax extension is needed;
@@ -49,6 +48,17 @@ let fun_test_case () =
 
 See also the library's [own unit tests](https://github.com/mlin/should.ml/blob/master/unit_tests.ml).
 
+## Installation
+
+Should.ml is available in [OPAM](http://opam.ocamlpro.com):
+`opam install should`. The findlib package name is also `should`.
+
+If you don't use OPAM, set up [findlib](http://projects.camlcity.org/projects/findlib.html),
+define the `OCAMLFIND_DESTDIR` environment variable if necessary and
+
+```git clone https://github.com/mlin/should.ml.git && cd should.ml && ./configure && make && make install```
+
+[![Build Status](https://travis-ci.org/mlin/should.ml.png)](https://travis-ci.org/mlin/should.ml)
 
 ### Reference
 

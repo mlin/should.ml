@@ -1,6 +1,6 @@
 OASISFormat: 0.3
 Name:        should
-Version:     0.0.1
+Version:     0.1.0
 Synopsis:    Literate assertions
 Authors:     Mike Lin
 Maintainers: mlin@mlin.net
