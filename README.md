@@ -1,4 +1,4 @@
-# [should.ml](https://github.com/mlin/should.js)
+# [should.ml](https://github.com/mlin/should.ml)
 **Maintainer: [Mike Lin](https://blog.mlin.net/)**
 
 This OCaml library allows one to write assertion statements in a
@@ -13,7 +13,7 @@ predecessor [should.js](https://github.com/visionmedia/should.js/).
 
 ### Quick example
 
-Read $ as the letter s, i.e. "$hould" as "should".
+Read $ as the letter 's', i.e. "$hould" as "should".
 
 ```
 open Should
@@ -48,7 +48,7 @@ let fun_test_case () =
 
 See also the library's [own unit tests](https://github.com/mlin/should.ml/blob/master/unit_tests.ml).
 
-## Installation
+### Installation
 
 Should.ml is available in [OPAM](http://opam.ocamlpro.com):
 `opam install should`. The findlib package name is also `should`.
@@ -89,12 +89,12 @@ x $hould # be # within (y,z)
 x $hould # be # strictly # within (y,z)
 ```
 
-"Physically" equal uses `(==)` instead of `(=)`. "Strictly within" compares
+"Physically equal" uses `(==)` instead of `(=)`. "Strictly within" compares
 against the bounds using `(>)` and `(<)` rather than `(>=)` and `(<=)`.
 
 
-Lastly, there's a generic assertion for a given predicate, with
-`pred : 'a -> bool`:
+Lastly, there's a generic assertion that the value satisfies given
+predicate, with `pred : 'a -> bool`:
 
 ```
 x $hould # satisfy pred
