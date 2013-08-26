@@ -5,7 +5,7 @@ This OCaml library allows one to write assertion statements in a
 domain-specific language roughly resembling plain English, making unit
 tests a bit nicer to read. No preprocessor or syntax extension is needed;
 rather, the DSL is expressed through some mild abuse of objects and
-overloaded operators.
+operators.
 
 This project is inspired by similar tools for various other languages,
 especially [expect.js](https://github.com/LearnBoost/expect.js/) and its
