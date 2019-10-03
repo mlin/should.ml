@@ -1,27 +1,17 @@
-#!/bin/bash -ex
+#!/bin/sh
 
-# OPAM version to install
-export OPAM_VERSION=1.0.0
-# OPAM packages needed to build tests
-export OPAM_PACKAGES='ounit'
+set -eux
 
-# install ocaml from apt
-sudo apt-get update -qq
-sudo apt-get install -qq ocaml
+# install ocaml and opam from apt
+sudo apt update -qq
+sudo apt install -qq ocaml opam
 
-# install opam
-curl -L https://github.com/OCamlPro/opam/archive/${OPAM_VERSION}.tar.gz | tar xz -C /tmp
-pushd /tmp/opam-${OPAM_VERSION}
-./configure
-make
-sudo make install
 opam init -y
-eval `opam config env`
-popd
+eval "$(opam env)"
 
 # install packages from opam
-opam install -q -y ${OPAM_PACKAGES}
+opam install -q -y dune ounit
 
-# compile & run tests (an OASIS DevFiles project might use ./configure --enable-tests && make test)
-./configure --enable-tests
-make test
+# compile & run tests
+dune build @all
+dune runtest
