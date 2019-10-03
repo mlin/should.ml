@@ -1,12 +1,3 @@
-*.annot
-*.cmo
-*.cma
-*.cmi
-*.a
-*.o
-*.cmx
-*.cmxs
-*.cmxa
-.c9revisions
-setup.data
-setup.log
+_build/
+*.merlin
+*.install

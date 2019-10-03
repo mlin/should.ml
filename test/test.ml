@@ -27,7 +27,7 @@ let test_equality () = begin
     0 $hould#not#equal 1;
     fails (fun () -> 0 $hould#equal 1);
     fails (fun () -> 0 $houldn't#equal 0);
-    
+
     let x = [0] in
     let y = [0] in begin
         x $hould#physically#equal x;
@@ -45,14 +45,14 @@ let test_comparisons () = begin
     0 $houldn't#be#above 1;
     fails (fun () -> 0 $hould#be#above 0);
     fails (fun () -> 1 $houldn't#be#above 0);
-    
+
     (* below *)
     0 $hould#be#below 1;
     0 $hould#not#be#below 0;
     1 $houldn't#be#below 0;
     fails (fun () -> 0 $hould#be#below 0);
     fails (fun () -> 0 $houldn't#be#below 1);
-    
+
     (* at least *)
     1 $hould#be#at#least 0;
     1 $hould#be#at#least 1;
@@ -60,7 +60,7 @@ let test_comparisons () = begin
     0 $houldn't#be#at#least 1;
     fails (fun () -> 0 $hould#be#at#least 1);
     fails (fun () -> 1 $houldn't#be#at#least 0);
-    
+
     (* at most *)
     0 $hould#be#at#most 1;
     1 $hould#be#at#most 1;
@@ -83,7 +83,7 @@ let test_within () = begin
     fails (fun () -> 2 $houldn't # be # within (1,3));
     fails (fun () -> 3 $houldn't # be # within (1,3));
     fails (fun () -> 4 $hould # be # within (1,3));
-    
+
     0 $ shouldn't # be # strictly # within (1,3);
     1 $hould#not#be#strictly#within (1,3);
     2 $hould#be#strictly#within (1,3);
@@ -105,7 +105,7 @@ let test_float () = begin
     fails (fun () -> nan $houldn't # be # nan);
     fails (fun () -> 0. $hould # be # nan);
     fails (fun () -> neg_infinity $hould # be # nan);
-    
+
     0. $hould # be # finite;
     nan $houldn't # be # finite;
     neg_infinity $houldn't # be # finite;
@@ -122,19 +122,19 @@ let test_list () = begin
     [0] $houldn't # equal [1];
     fails (fun () -> [0] $hould # equal []);
     fails (fun () -> [] $houldn't # equal []);
-    
+
     list [] $hould # be # empty;
     list [0] $houldn't # be # empty;
     fails (fun () -> list [1] $hould # be # empty);
     fails (fun () -> list [] $houldn't # be # empty);
-    
+
     list [] $hould # have # length 0;
     list [1] $hould # have # length 1;
     list [1; 2] $hould # have # length 2;
     list [] $hould # not # have # length 1;
     fails (fun () -> list [] $hould # have # length 1);
     fails (fun () -> list [1; 2; 3] $houldn't # have # length 3);
-    
+
     list [0] $hould # contain 0;
     list [1; 2; 3] $hould # contain 2;
     list [] $houldn't # contain 0;
@@ -150,19 +150,19 @@ let test_array () = begin
     [|0|] $houldn't # equal [|1|];
     fails (fun () -> [|0|] $hould # equal [||]);
     fails (fun () -> [||] $houldn't # equal [||]);
-    
+
     array [||] $hould # be # empty;
     array [|0|] $houldn't # be # empty;
     fails (fun () -> array [|1|] $hould # be # empty);
     fails (fun () -> array [||] $houldn't # be # empty);
-    
+
     array [||] $hould # have # length 0;
     array [|1|] $hould # have # length 1;
     array [|1; 2|] $hould # have # length 2;
     array [||] $hould # not # have # length 1;
     fails (fun () -> array [||] $hould # have # length 1);
     fails (fun () -> array [|1; 2; 3|] $houldn't # have # length 3);
-    
+
     array [|0|] $hould # contain 0;
     array [|1; 2; 3|] $hould # contain 2;
     array [||] $houldn't # contain 0;
@@ -178,12 +178,12 @@ let test_string () = begin
     "foo" $houldn't # equal "bar";
     fails (fun () -> "foo" $hould # equal "bar");
     fails (fun () -> "foo" $hould # not # equal "foo");
-    
+
     string "" $hould # be # empty;
     string "foo" $houldn't # be # empty;
     fails (fun () -> string "" $houldn't # be # empty);
     fails (fun () -> string "foo" $hould # be # empty);
-    
+
     string "" $hould # have # length 0;
     string "" $houldn't # have # length 1;
     string "foo" $hould # have # length 3;
@@ -192,7 +192,7 @@ let test_string () = begin
     fails (fun () -> string "" $houldn't # have # length 0);
     fails (fun () -> string "foo" $hould # have # length 0);
     fails (fun () -> string "foo" $houldn't # have # length 3);
-    
+
     string "foo" $hould # contain "foo";
     string "the quick brown fox" $hould # contain "quick";
     string "the quick brown fox" $hould # contain "wn fo";
@@ -202,7 +202,7 @@ let test_string () = begin
     fails (fun () -> string "foo" $hould # contain "bar");
     fails (fun () -> string "" $hould # contain "bar");
     fails (fun () -> string "the quick brown fox" $houldn't # contain "brown");
-    
+
     string "foo" $hould # be # matching (Str.regexp "foo.*");
     string "the quick brown fox" $hould # be # matching (Str.regexp ".*fox$");
     string "foo" $houldn't # be # matching (Str.regexp "bar");
@@ -212,12 +212,12 @@ end
 
 let nop () = ()
 ;;
-let test_calling () = begin
+let [@warning "-52"] test_calling () = begin
     calling failwith "" $hould # raise # any # exn;
     calling nop () $houldn't # raise # any # exn;
     fails (fun () -> failwith "" $houldn't # raise # any # exn);
     fails (fun () -> calling nop () $hould # raise # any # exn);
-    
+
     calling failwith "foo" $hould # raise # exn # satisfying (fun _ -> true);
     calling failwith "foo" $hould # raise # exn # satisfying
         (function Failure "foo" -> true | _ -> false);
@@ -225,7 +225,7 @@ let test_calling () = begin
     fails (fun () -> calling failwith "" $hould # raise # exn # satisfying (fun _ -> false));
     fails (fun () -> calling failwith "" $hould # raise # exn # satisfying
             (function Exit -> true | Failure "bar" -> true | _ -> false));
-    
+
     calling failwith "" $hould # raise # exn # prefixed "Failure";
     fails (fun () -> calling failwith "" $hould # raise # exn # prefixed "Foo")
 end

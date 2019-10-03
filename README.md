@@ -53,10 +53,9 @@ See also the library's [own unit tests](https://github.com/mlin/should.ml/blob/m
 Should.ml is available in [OPAM](http://opam.ocamlpro.com):
 `opam install should`. The findlib package name is also `should`.
 
-If you don't use OPAM, set up [findlib](http://projects.camlcity.org/projects/findlib.html),
-define the `OCAMLFIND_DESTDIR` environment variable if necessary and
+If you don't use OPAM:
 
-```git clone https://github.com/mlin/should.ml.git && cd should.ml && ./configure && make && make install```
+```git clone https://github.com/mlin/should.ml.git && cd should.ml && dune build && dune install```
 
 [![Build Status](https://travis-ci.org/mlin/should.ml.png)](https://travis-ci.org/mlin/should.ml)
 
